@@ -1,6 +1,6 @@
 module Lists (member, union, intersection, difference,
               insert, insertionSort,
-              binaryToDecimal, toDecimal, toDec, decimal,
+              binaryToDecimal, toDecimal, toDec, decimal, firsts,
               binaryAdd) where
   
 import Data.Char(digitToInt)  
@@ -19,25 +19,41 @@ union (x:xs) ys
 -- Remove Implementations, from, here on
 
 intersection:: [Int] -> [Int] -> [Int]
-intersection = error "Implement it"
+intersection a b
+    | length a == 0 = []
+    | member (head a) b = [head a] ++ intersection (tail a) b
+    | otherwise = intersection (tail a) b
+
 
 difference:: [Int] -> [Int] -> [Int]
-difference  = error "Implement it"
+difference a b
+    | length a == 0 = []
+    | member (head a) b = difference (tail a) b
+    | otherwise = [head a] ++ difference (tail a) b
 
 insert:: Int -> [Int] -> [Int]
-insert = error "Implement it"
+insert element a
+    | length a == 0 = [element]
+    | element>head(a) = [head a] ++ insert element (tail a)
+    | otherwise = [element] ++ a
 
 insertionSort :: [Int] -> [Int]
-insertionSort = error "Implement it"
+insertionSort a
+    | length a == 0 = []
+    | otherwise = insert (head a) (insertionSort (tail a))
 
 binaryToDecimal :: [Int] -> Int
-binaryToDecimal = error "Implement it"
+binaryToDecimal binary
+    | length binary == 1 = (head binary) * (2^0)
+    | otherwise = ((head binary) * 2^((length binary) - 1)) + binaryToDecimal (tail binary)
     
 toDecimal :: Int -> [Int] -> Int
-toDecimal = error "Implement it"
-    
+toDecimal base num
+    | length num == 1 = (head num) * (base^0)
+    | otherwise = ((head num) * base^((length num) - 1)) + binaryToDecimal (tail num)
+
 toDec::Int -> String -> Int
-toDec base s =  = error "Implement it"
+toDec base s = error "Implement it"
 
 -- Same as `toDec` But use a list comprehension
 
