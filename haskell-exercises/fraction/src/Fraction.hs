@@ -45,3 +45,5 @@ hcfRecursivo a b divisor
     | divisor==1 = 1
     | (mod a divisor == 0) && (mod b divisor == 0) = divisor
     | otherwise = hcfRecursivo a b (divisor-1)
+
+-- para ejecutar tests, abrir directorio en la terminal, y ejecutar stack test
