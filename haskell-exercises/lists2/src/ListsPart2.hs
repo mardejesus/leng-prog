@@ -8,15 +8,16 @@ type Bits = [Bit]
 
 bitAt :: Int -> Char -> Bit
 bitAt n c = if testBit (ord c) (7-n) then T else F 
+-- dado un char y una posición, devuelve el bit (T o F) en esa posición de la representación del char como byte
 
 charToBits :: Char -> Bits
-charToBits = error "Implement It"
-
+charToBits c = [bitAt n c | n <- [0..7]]
 
 bits::String -> Bits
-bits = error "Implement It"
+bits str = [bitAt n c | c <- str, n<-[0..7]]
+-- un string es una lista de caracteres
 
 type Solution = [Int]
 
 queens::Int -> [Solution]
-queens error "Implement It"
+queens = error "Implement It"
